@@ -1,28 +1,25 @@
----
-
-### 2. `style.css` (CSS Modular, Mobile-First, Estética Prata Metálico & Terminal)
-
-```css
 /* ==========================================================================
-   BASE MESTRE CSS - connect>_ virtuhouse
-   Foco: Mobile-First, Zero CLS, Alto Contraste WCAG e Estética Prata/Terminal
+   BASE MESTRE CSS - connect>_ virtuhouse (Tema Prata Metálico)
    ========================================================================== */
 
 :root {
-  /* Paleta Metálica e Terminal */
-  --bg-dark: #111315;
-  --bg-surface: #1a1d20;
-  --bg-card: #212529;
-  --silver-light: #e2e5e9;
-  --silver-mid: #aeb4bc;
-  --silver-dark: #6c757d;
-  --silver-gradient: linear-gradient(145deg, #d8dce0 0%, #9fa6ae 50%, #c4c9ce 100%);
-  --border-metallic: #3a3f45;
-  --text-primary: #f1f3f5;
-  --text-secondary: #adb5bd;
-  --text-on-silver: #111315;
-  --accent-focus: #ffffff;
-  --status-ok: #adb5bd;
+  /* Paleta Prata Metálico (Superfície de Calculadora / Aço Escovado) */
+  --bg-silver-base: #cfd4da;
+  --bg-silver-gradient: linear-gradient(135deg, #e4e7eb 0%, #c2c8d0 50%, #d5d9df 100%);
+  --bg-surface: #dce0e5;
+  --bg-card: #e9ecef;
+  --bg-card-admin: #212529;
+  
+  --border-metallic: #9aa1a9;
+  --border-highlight: #ffffff;
+  
+  --text-primary: #14171a;
+  --text-secondary: #3b424a;
+  --text-inverse: #f1f3f5;
+  
+  --btn-dark-bg: #1c1f23;
+  --btn-dark-hover: #2c3137;
+  --accent-focus: #000000;
 
   /* Tipografia */
   --font-display: 'Share Tech Mono', monospace;
@@ -35,7 +32,6 @@
   --transition: 0.2s ease-in-out;
 }
 
-/* Reset Limpo */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -44,7 +40,9 @@
 
 html {
   scroll-behavior: smooth;
-  background-color: var(--bg-dark);
+  background-color: var(--bg-silver-base);
+  background-image: var(--bg-silver-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: var(--font-body);
   line-height: 1.6;
@@ -55,8 +53,8 @@ html {
   position: absolute;
   top: -100px;
   left: 1rem;
-  background: var(--silver-light);
-  color: var(--text-on-silver);
+  background: var(--btn-dark-bg);
+  color: var(--text-inverse);
   padding: 0.75rem 1rem;
   font-family: var(--font-display);
   font-weight: 600;
@@ -74,7 +72,6 @@ html {
   outline-offset: 3px;
 }
 
-/* Layout Base (Mobile-First) */
 .container {
   width: 100%;
   max-width: var(--container-max);
@@ -82,10 +79,11 @@ html {
   padding: 0 1.25rem;
 }
 
-/* Header */
+/* Header Prata Metálico */
 .site-header {
-  background-color: var(--bg-surface);
+  background: linear-gradient(180deg, #e8ebef 0%, #cfd4da 100%);
   border-bottom: 1px solid var(--border-metallic);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
   padding: 1rem 0;
 }
 
@@ -98,11 +96,11 @@ html {
 
 .brand-logo img {
   display: block;
-  width: 190px;
+  width: 200px;
   height: auto;
   border-radius: var(--radius-sm);
-  border: 1px solid var(--silver-dark);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  border: 1px solid var(--border-metallic);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
 }
 
 .main-nav ul {
@@ -114,35 +112,36 @@ html {
 }
 
 .main-nav a {
-  color: var(--silver-light);
+  color: var(--text-primary);
   text-decoration: none;
   font-family: var(--font-display);
-  font-size: 1rem;
+  font-size: 1.05rem;
+  font-weight: 600;
   letter-spacing: 0.5px;
-  transition: color var(--transition);
+  transition: opacity var(--transition);
 }
 
 .main-nav a:hover {
-  color: #ffffff;
+  opacity: 0.7;
   text-decoration: underline;
 }
 
 /* Hero Section */
 .hero-section {
-  padding: 3rem 0 2rem;
+  padding: 3rem 0 2.25rem;
   text-align: center;
   border-bottom: 1px solid var(--border-metallic);
-  background: radial-gradient(circle at top, #23272b 0%, var(--bg-dark) 70%);
 }
 
 .terminal-badge {
   display: inline-block;
   font-family: var(--font-display);
   font-size: 0.85rem;
-  color: var(--silver-mid);
-  background: var(--bg-surface);
+  color: var(--text-primary);
+  background: rgba(255, 255, 255, 0.45);
   border: 1px solid var(--border-metallic);
-  padding: 0.35rem 0.75rem;
+  box-shadow: inset 0 1px 0 var(--border-highlight);
+  padding: 0.35rem 0.85rem;
   border-radius: var(--radius-sm);
   margin-bottom: 1rem;
 }
@@ -151,9 +150,9 @@ h1 {
   font-family: var(--font-display);
   font-size: 2rem;
   line-height: 1.2;
-  color: var(--silver-light);
+  color: var(--text-primary);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   margin-bottom: 1rem;
-  letter-spacing: 0.5px;
 }
 
 .hero-subtitle {
@@ -163,7 +162,7 @@ h1 {
   font-size: 1.05rem;
 }
 
-/* Portais de Acesso (3 Colunas Responsivas) */
+/* Portais de Acesso */
 .portals-section {
   padding: 3rem 0;
 }
@@ -172,7 +171,8 @@ h1 {
   font-family: var(--font-display);
   font-size: 1.5rem;
   text-align: center;
-  color: var(--silver-light);
+  color: var(--text-primary);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.7);
   margin-bottom: 2rem;
 }
 
@@ -183,41 +183,52 @@ h1 {
 }
 
 .portal-card {
-  background-color: var(--bg-card);
+  background: linear-gradient(160deg, #f1f3f5 0%, #d8dde3 100%);
   border: 1px solid var(--border-metallic);
-  border-top: 3px solid var(--silver-mid);
+  border-top: 3px solid #495057;
   border-radius: var(--radius-md);
   padding: 1.75rem;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.35);
-  transition: transform var(--transition), border-color var(--transition);
+  box-shadow: inset 0 1px 0 var(--border-highlight), 0 8px 20px rgba(0, 0, 0, 0.12);
+  transition: transform var(--transition), box-shadow var(--transition);
 }
 
 .portal-card:hover {
   transform: translateY(-3px);
-  border-color: var(--silver-light);
+  box-shadow: inset 0 1px 0 var(--border-highlight), 0 12px 24px rgba(0, 0, 0, 0.18);
 }
 
+/* Card Admin com destaque metálico grafite */
 .portal-card--admin {
-  border-top-color: var(--silver-light);
-  background: linear-gradient(180deg, #25292e 0%, #1b1e22 100%);
+  background: linear-gradient(160deg, #2b3036 0%, #181b1f 100%);
+  color: var(--text-inverse);
+  border-color: #111315;
+  border-top: 3px solid #adb5bd;
 }
 
 .code-tag {
   display: block;
   font-family: var(--font-display);
   font-size: 0.85rem;
-  color: var(--silver-mid);
+  color: var(--text-secondary);
   margin-bottom: 0.35rem;
+}
+
+.portal-card--admin .code-tag {
+  color: #adb5bd;
 }
 
 .portal-card h3 {
   font-family: var(--font-display);
   font-size: 1.4rem;
-  color: #ffffff;
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
+}
+
+.portal-card--admin h3 {
+  color: #ffffff;
 }
 
 .portal-card p {
@@ -226,19 +237,31 @@ h1 {
   margin-bottom: 1.25rem;
 }
 
+.portal-card--admin p {
+  color: #ced4da;
+}
+
 .feature-list {
   list-style: none;
   margin-bottom: 1.75rem;
-  border-top: 1px solid var(--border-metallic);
+  border-top: 1px solid rgba(0, 0, 0, 0.12);
   padding-top: 1rem;
+}
+
+.portal-card--admin .feature-list {
+  border-top-color: rgba(255, 255, 255, 0.15);
 }
 
 .feature-list li {
   font-size: 0.9rem;
-  color: var(--silver-light);
+  color: var(--text-primary);
   margin-bottom: 0.5rem;
   padding-left: 1.25rem;
   position: relative;
+}
+
+.portal-card--admin .feature-list li {
+  color: #e9ecef;
 }
 
 .feature-list li::before {
@@ -246,10 +269,10 @@ h1 {
   position: absolute;
   left: 0;
   font-family: var(--font-display);
-  color: var(--silver-mid);
+  font-weight: bold;
 }
 
-/* Botões Prata Metálico */
+/* Botões Estilo Tecla de Calculadora */
 .btn-silver {
   display: inline-flex;
   align-items: center;
@@ -259,19 +282,19 @@ h1 {
   font-family: var(--font-display);
   font-size: 1.05rem;
   font-weight: 600;
-  color: var(--text-on-silver);
-  background: var(--silver-gradient);
-  border: 1px solid #ffffff;
+  color: #ffffff;
+  background: linear-gradient(180deg, #343a40 0%, #1a1d20 100%);
+  border: 1px solid #111315;
   border-radius: var(--radius-sm);
   cursor: pointer;
   text-transform: uppercase;
   letter-spacing: 0.5px;
-  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.6), 0 3px 8px rgba(0, 0, 0, 0.4);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.25), 0 3px 6px rgba(0, 0, 0, 0.2);
   transition: filter var(--transition), transform var(--transition);
 }
 
 .btn-silver:hover {
-  filter: brightness(1.08);
+  filter: brightness(1.15);
 }
 
 .btn-silver:active {
@@ -279,14 +302,9 @@ h1 {
 }
 
 .btn-silver--outline {
-  background: transparent;
-  color: var(--silver-light);
-  border: 1px solid var(--silver-mid);
-  box-shadow: none;
-}
-
-.btn-silver--outline:hover {
-  background: rgba(226, 229, 233, 0.1);
+  background: linear-gradient(180deg, #e9ecef 0%, #ced4da 100%);
+  color: #14171a;
+  border: 1px solid #ffffff;
 }
 
 /* Seção Informativa */
@@ -304,7 +322,7 @@ h1 {
 .info-block h2 {
   font-family: var(--font-display);
   font-size: 1.3rem;
-  color: var(--silver-light);
+  color: var(--text-primary);
   margin-bottom: 0.75rem;
 }
 
@@ -315,11 +333,11 @@ h1 {
 
 /* Footer */
 .site-footer {
-  background-color: var(--bg-surface);
+  background: #bcc2c9;
   border-top: 1px solid var(--border-metallic);
   padding: 1.5rem 0;
   font-size: 0.9rem;
-  color: var(--text-secondary);
+  color: var(--text-primary);
 }
 
 .footer-inner {
@@ -339,7 +357,7 @@ h1 {
   display: inline-block;
   width: 8px;
   height: 8px;
-  background-color: var(--silver-light);
+  background-color: #1c1f23;
   border-radius: 50%;
   margin-right: 4px;
 }
@@ -350,15 +368,15 @@ h1 {
   padding: 0;
   width: 92%;
   max-width: 440px;
-  background-color: var(--bg-card);
+  background: var(--bg-surface);
   color: var(--text-primary);
-  border: 1px solid var(--silver-mid);
+  border: 1px solid var(--border-metallic);
   border-radius: var(--radius-md);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.75);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.45);
 }
 
 .terminal-modal::backdrop {
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(17, 19, 21, 0.75);
   backdrop-filter: blur(3px);
 }
 
@@ -367,20 +385,20 @@ h1 {
   justify-content: space-between;
   align-items: center;
   padding: 1rem 1.25rem;
-  background: var(--bg-surface);
+  background: #cfd4da;
   border-bottom: 1px solid var(--border-metallic);
 }
 
 .modal-header h2 {
   font-family: var(--font-display);
   font-size: 1.2rem;
-  color: var(--silver-light);
+  color: var(--text-primary);
 }
 
 .btn-close {
   background: none;
   border: none;
-  color: var(--silver-light);
+  color: var(--text-primary);
   font-size: 1.75rem;
   line-height: 1;
   cursor: pointer;
@@ -404,29 +422,25 @@ h1 {
   display: block;
   font-family: var(--font-display);
   font-size: 0.9rem;
-  color: var(--silver-light);
+  color: var(--text-primary);
   margin-bottom: 0.4rem;
 }
 
 .form-group input {
   width: 100%;
   padding: 0.75rem;
-  background-color: var(--bg-dark);
+  background-color: #ffffff;
   border: 1px solid var(--border-metallic);
   border-radius: var(--radius-sm);
-  color: #ffffff;
+  color: var(--text-primary);
   font-family: var(--font-display);
   font-size: 1rem;
-}
-
-.form-group input:focus {
-  border-color: var(--silver-light);
 }
 
 .form-feedback {
   font-family: var(--font-display);
   font-size: 0.88rem;
-  color: var(--silver-light);
+  color: var(--text-primary);
   margin-bottom: 1rem;
   min-height: 1.2rem;
 }
@@ -453,3 +467,5 @@ h1 {
   .footer-inner {
     flex-direction: row;
     justify-content: space-between;
+  }
+}
